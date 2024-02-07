@@ -37,12 +37,12 @@ export const OptionsNavbar: FC<Props> = ({ getAll, getSign, getForSign }) => {
                     >
                         Firmados
                     </span>
-                    <span 
+                    {/*<span 
                         onClick={()=>getForSign()}
                         className='text-lg font-light p-3 bg-gradient-t-l to-white from-white cursor-pointer hover:to-purple-400 hover:from-sky-400'
                     >
                         Firmar
-                    </span>
+                    </span>*/}
                 </section>
             }
 

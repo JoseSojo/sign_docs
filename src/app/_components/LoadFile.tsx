@@ -3,6 +3,7 @@
 import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { useSignature } from '../_hooks/useCount';
 import { LoaderScreen } from "./Loaders/LoaderScreen/LoaderScren";
+import useWeb3Provider from "../_hooks/useWeb3Provider";
 
 
 export const UploadFileForm: FC = () => {
@@ -13,6 +14,11 @@ export const UploadFileForm: FC = () => {
     const [error, setError] = useState<string | null>(null);
     const [message, setMessage] = useState<{type:boolean,msg:string} | null>(null);
 
+    const {
+        connectWallet,
+        disconnect,
+        web3: {address}
+    } = useWeb3Provider();
     const sign = useSignature();
 
     const HandleChangeFile = (e: ChangeEvent<HTMLInputElement>) => {
@@ -72,57 +78,63 @@ export const UploadFileForm: FC = () => {
             :   error == 'global'  
             ?   <p>Faltal error...</p>
             :<>
-            {message != null && <h3 className={`${message.type ? 'text-emerald-700' : 'text-red-700'} font-extra-bold text-2xl`}>{message.msg}</h3>}
-            <form onSubmit={HandleSubmit} className='grid gap-y-5'>
-                <label className='grid text-lg text-gray-600'>
-                    <p>
-                        (<span className='font-bold text-lg text-sky-800'>*</span>)
-                        Documento/Solicitud
-                    </p>
-                    <input
-                        className='p-3 rounded-lg shadow-md bg-white' 
-                        type='file'
-                        placeholder=''
-                        onChange={HandleChangeFile}
-                        />
-                    { error && error == 'input.file' && <p className='text-lg text-red-700'>Debes seleccionar un archivo</p> }
-                </label>
-                
-                <label className='grid text-lg text-gray-600'>
-                    <p>
-                        (<span className='font-bold text-lg text-sky-800'>*</span>)
-                        Correo Electrónico
-                    </p>
-                    <input
-                        className='p-3 rounded-lg shadow-md bg-white' 
-                        type='email'
-                        placeholder='ejemplo@gmail.com'
-                        onChange={(e)=> setEmail(e.target.value)}
-                        />
-                    { error && error == 'input.email' && <p className='text-lg text-red-700'>Debes completar este campo</p> }
-                </label>
+                {
+                    address
+                    ? <>
+                        {message != null && <h3 className={`${message.type ? 'text-emerald-700' : 'text-red-700'} font-extra-bold text-2xl`}>{message.msg}</h3>}
+                        <form onSubmit={HandleSubmit} className='grid gap-y-5'>
+                            <label className='grid text-lg text-gray-600'>
+                                <p>
+                                    (<span className='font-bold text-lg text-sky-800'>*</span>)
+                                    Documento/Solicitud
+                                </p>
+                                <input
+                                    className='p-3 rounded-lg shadow-md bg-white' 
+                                    type='file'
+                                    placeholder=''
+                                    onChange={HandleChangeFile}
+                                    />
+                                { error && error == 'input.file' && <p className='text-lg text-red-700'>Debes seleccionar un archivo</p> }
+                            </label>
+                            
+                            <label className='grid text-lg text-gray-600'>
+                                <p>
+                                    (<span className='font-bold text-lg text-sky-800'>*</span>)
+                                    Correo Electrónico
+                                </p>
+                                <input
+                                    className='p-3 rounded-lg shadow-md bg-white' 
+                                    type='email'
+                                    placeholder='ejemplo@gmail.com'
+                                    onChange={(e)=> setEmail(e.target.value)}
+                                    />
+                                { error && error == 'input.email' && <p className='text-lg text-red-700'>Debes completar este campo</p> }
+                            </label>
 
-                <label className='grid text-lg text-gray-600'>
-                    <p>
-                        (<span className='font-bold text-lg text-sky-800'>*</span>)
-                        Descripción
-                    </p>
-                    <input
-                        className='p-3 rounded-lg shadow-md bg-white' 
-                        type='text'
-                        placeholder='descripción corta'
-                        onChange={(e)=> setDescription(e.target.value)}
-                        />
-                    { error && error == 'input.description' && <p className='text-lg text-red-700'>Debes completar este campo</p> }
-                </label>
+                            <label className='grid text-lg text-gray-600'>
+                                <p>
+                                    (<span className='font-bold text-lg text-sky-800'>*</span>)
+                                    Descripción
+                                </p>
+                                <input
+                                    className='p-3 rounded-lg shadow-md bg-white' 
+                                    type='text'
+                                    placeholder='descripción corta'
+                                    onChange={(e)=> setDescription(e.target.value)}
+                                    />
+                                { error && error == 'input.description' && <p className='text-lg text-red-700'>Debes completar este campo</p> }
+                            </label>
 
-                <button
-                    type='submit'
-                    className='w-full bg-sky-700 hover:bg-sky-800 text-white font-bold rounded-lg py-2'
-                >
-                    enviar
-                </button>
-            </form>
+                            <button
+                                type='submit'
+                                className='w-full bg-sky-700 hover:bg-sky-800 text-white font-bold rounded-lg py-2'
+                            >
+                                enviar
+                            </button>
+                        </form>
+                        </>
+                        : <button onClick={connectWallet} className='w-48 py-2 text-center bg-purple-400 hover:bg-purple-500 text-white font-bold'>conectar al metamask</button>
+                }
             </>
         }
         </>
