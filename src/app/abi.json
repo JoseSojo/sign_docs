@@ -1,0 +1,221 @@
+[
+	{
+	"inputs": [
+		{
+		"components": [
+			{
+			"internalType": "string",
+			"name": "id",
+			"type": "string"
+			},
+			{
+			"internalType": "string",
+			"name": "description",
+			"type": "string"
+			},
+			{
+			"internalType": "string",
+			"name": "email",
+			"type": "string"
+			},
+			{
+			"internalType": "bool",
+			"name": "signature",
+			"type": "bool"
+			}
+		],
+		"internalType": "struct SignatureDoc.Doc",
+		"name": "dc",
+		"type": "tuple"
+		}
+	],
+	"name": "AddDoc",
+	"outputs": [],
+	"stateMutability": "nonpayable",
+	"type": "function"
+	},
+	{
+	"inputs": [],
+	"name": "DocumentCount",
+	"outputs": [
+		{
+		"internalType": "uint256",
+		"name": "",
+		"type": "uint256"
+		}
+	],
+	"stateMutability": "view",
+	"type": "function"
+	},
+	{
+	"inputs": [],
+	"name": "GetAllDocs",
+	"outputs": [
+		{
+		"components": [
+			{
+			"internalType": "string",
+			"name": "id",
+			"type": "string"
+			},
+			{
+			"internalType": "string",
+			"name": "description",
+			"type": "string"
+			},
+			{
+			"internalType": "string",
+			"name": "email",
+			"type": "string"
+			},
+			{
+			"internalType": "bool",
+			"name": "signature",
+			"type": "bool"
+			}
+		],
+		"internalType": "struct SignatureDoc.Doc[]",
+		"name": "",
+		"type": "tuple[]"
+		}
+	],
+	"stateMutability": "view",
+	"type": "function"
+	},
+	{
+	"inputs": [],
+	"name": "GetCountDocs",
+	"outputs": [
+		{
+		"internalType": "uint256",
+		"name": "dc",
+		"type": "uint256"
+		}
+	],
+	"stateMutability": "view",
+	"type": "function"
+	},
+	{
+	"inputs": [
+		{
+		"internalType": "uint256",
+		"name": "",
+		"type": "uint256"
+		}
+	],
+	"name": "documents",
+	"outputs": [
+		{
+		"internalType": "string",
+		"name": "id",
+		"type": "string"
+		},
+		{
+		"internalType": "string",
+		"name": "description",
+		"type": "string"
+		},
+		{
+		"internalType": "string",
+		"name": "email",
+		"type": "string"
+		},
+		{
+		"internalType": "bool",
+		"name": "signature",
+		"type": "bool"
+		}
+	],
+	"stateMutability": "view",
+	"type": "function"
+	},
+	{
+	"inputs": [],
+	"name": "getNotSignedDocuments",
+	"outputs": [
+		{
+		"components": [
+			{
+			"internalType": "string",
+			"name": "id",
+			"type": "string"
+			},
+			{
+			"internalType": "string",
+			"name": "description",
+			"type": "string"
+			},
+			{
+			"internalType": "string",
+			"name": "email",
+			"type": "string"
+			},
+			{
+			"internalType": "bool",
+			"name": "signature",
+			"type": "bool"
+			}
+		],
+		"internalType": "struct SignatureDoc.Doc[]",
+		"name": "",
+		"type": "tuple[]"
+		}
+	],
+	"stateMutability": "view",
+	"type": "function"
+	},
+	{
+	"inputs": [],
+	"name": "getSignedDocuments",
+	"outputs": [
+		{
+		"components": [
+			{
+			"internalType": "string",
+			"name": "id",
+			"type": "string"
+			},
+			{
+			"internalType": "string",
+			"name": "description",
+			"type": "string"
+			},
+			{
+			"internalType": "string",
+			"name": "email",
+			"type": "string"
+			},
+			{
+			"internalType": "bool",
+			"name": "signature",
+			"type": "bool"
+			}
+		],
+		"internalType": "struct SignatureDoc.Doc[]",
+		"name": "",
+		"type": "tuple[]"
+		}
+	],
+	"stateMutability": "view",
+	"type": "function"
+	},
+	{
+	"inputs": [
+		{
+		"internalType": "string",
+		"name": "_id",
+		"type": "string"
+		}
+	],
+	"name": "signDocument",
+	"outputs": [
+		{
+		"internalType": "bool",
+		"name": "sing",
+		"type": "bool"
+		}
+	],
+	"stateMutability": "nonpayable",
+	"type": "function"
+	}
+]  

@@ -1,0 +1,73 @@
+.walletBalanceCard {
+    width: 100%;
+    min-height: 80px;
+    max-height: 130px;
+    background-color: #fff;
+    border-radius: 10px;
+    display: grid;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 0px 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    grid-template-columns: 100px 1fr 150px;
+  }
+  .balancewrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    gap: 0px;
+  }
+  .balanceHeading {
+    font-size: 8px;
+    color: rgb(121, 121, 121);
+    font-weight: 100;
+    letter-spacing: 0.6px;
+  }
+  .balance {
+    font-size: 14.5px;
+    color: rgb(71, 71, 71);
+    font-weight: 600;
+  }
+  
+  .fir {
+    background: #8800d6;
+    color: #ffffff;
+    font-weight: bold;
+    transition: all .5s;
+  }
+  .fir:hover {
+    background: #6700a3;
+    border: 2px solid #6700a3;
+    color: #ffffff;
+  }
+
+  .to-fir {
+    background: transparent;
+    border: 2px solid #8800d6;
+    color: #8800d6;
+    font-weight: bold;
+  }
+
+  .addmoney {
+    width: 100%;
+    padding: 1px 15px;
+    border-radius: 20px;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  .plussign {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
