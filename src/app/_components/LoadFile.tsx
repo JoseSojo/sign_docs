@@ -38,12 +38,20 @@ export const UploadFileForm: FC = () => {
         if(!description) return SetErrorAndLoad('input.description');
 
         setLoad('form.upload');
+        console.log('cargando... 1');
         const SaveFile = async () => {
             const fields = new FormData();
             fields.append('doc', file);
 
+            console.log('cargando... 2');
             const response = await fetch('/api/docs', { method:'POST', body:fields });
-            if(!response.ok) return console.log('ERROR');
+            if(!response.ok) {
+                console.log('cargando... error...');
+
+                return console.log('ERROR');
+            }
+
+            console.log('cargando... 3');
 
             const result = await response.json();
             
@@ -53,12 +61,20 @@ export const UploadFileForm: FC = () => {
                 id: `${result.body.filename}`,
                 signature: false,
             }
+            console.log('cargando... 4');
+
             const resultContract = await sign.AddDoc(SaveToContract);
 
+            console.log('cargando... 5');
+
             if(resultContract) {
+            console.log('cargando... exito...');
+
                 setMessage({type:true,msg:'Documento/solicitud enviado'});
                 return setLoad(null);
             }
+            console.log('cargando... error final...');
+
             setLoad(null);
             setMessage({type:false,msg:'error al cargar Documento/solicitud'});
             return setError('Error al cargar el archivo');
